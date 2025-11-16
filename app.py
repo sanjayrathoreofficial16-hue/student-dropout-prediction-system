@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import time
 
 # === PAGE CONFIG ===
-st.set_page_config(page_title="Student Dropout Prediction - Asif Iqbal Khan", layout="wide")
+st.set_page_config(page_title="Student Dropout Prediction - Nawal Rai", layout="wide")
 
 # === CUSTOM CSS + TOASTR JS ===
 st.markdown("""
@@ -94,7 +94,7 @@ st.markdown("""
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     };
-    function showPredicting() { toastr.info('Analyzing profile...', 'Predicting'); }
+    function showPredicting() { toastr.info('Analyzing student profile...', 'Predicting'); }
     function showResult(res) { 
         if (res === 'Dropout') toastr.error('High Risk!', 'Dropout'); 
         else if (res === 'Graduate') toastr.success('Will Graduate!', 'Graduate'); 
@@ -107,14 +107,18 @@ st.markdown("""
 st.markdown(f"""
 <div class="header-container">
     <div class="header-title fade-in">Student Dropout Prediction System</div>
-    <div class="header-subtitle">Using Machine Learning Models | Asif Iqbal Khan</div>
+    <div class="header-subtitle">Using Machine Learning Models | Nawal Rai</div>
 </div>
 """, unsafe_allow_html=True)
 
 # === TOP NAVIGATION BAR ===
-col1, col2, col3 = st.columns([1, 1, 1])
 pages = ["Prediction", "Data Insights", "Model Performance"]
-active_page = st.session_state.get("page", pages[0])
+
+# Initialize session state safely
+if "page" not in st.session_state:
+    st.session_state.page = pages[0]
+
+col1, col2, col3 = st.columns([1, 1, 1])
 
 with col1:
     if st.button("Prediction", key="nav1"):
@@ -128,14 +132,6 @@ with col3:
     if st.button("Model Performance", key="nav3"):
         st.session_state.page = "Model Performance"
         st.rerun()
-
-# Update active class
-st.markdown(f"""
-<script>
-    document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.nav-button')[{(pages.index(active_page)) if active_page in pages else 0}].classList.add('active');
-</script>
-""", unsafe_allow_html=True)
 
 # === LOAD DATA & MODEL ===
 @st.cache_data
@@ -228,11 +224,11 @@ elif page == "Model Performance":
     st.image("https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
              caption="ML Model Visualizing Academic Success", use_column_width=True)
 
-# === FOOTER WITH YOUR INFO ===
+# === FOOTER WITH NAWAL RAI'S INFO ===
 st.markdown("---")
 st.markdown(f"""
 <div class="fade-in" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
     <h3>Project by Nawal Rai</h3>
-    <p><strong>Roll No#:</strong>  B2361115 | <strong>Email:</strong> nawalmeghwar9@gmail.com | <strong>Department:</strong> BS Information Technology</p>
+    <p><strong>Roll No:</strong> B2361115 | <strong>Email:</strong> nawalmeghwar9@gmail.com | <strong>Department:</strong> BS Information Technology</p>
 </div>
 """, unsafe_allow_html=True)
