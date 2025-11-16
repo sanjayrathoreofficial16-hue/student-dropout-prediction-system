@@ -101,10 +101,11 @@ if page == "Prediction":
         # Show Result Toast
         st.markdown(f'<script>showResult("{pred_label}");</script>', unsafe_allow_html=True)
 
-        # Animated Pie Chart
+        # Animated Pie Chart (FIXED: Removed invalid transition_duration from traces)
         fig = px.pie(values=pred_proba, names=le.classes_, title=f"Prediction: {pred_label}",
                      color_discrete_sequence=px.colors.qualitative.Bold)
-        fig.update_traces(textinfo='percent+label', transition_duration=1000)
+        fig.update_traces(textinfo='percent+label')
+        fig.update_layout(transition_duration=1000)  # Use layout for overall transition
         st.plotly_chart(fig, use_container_width=True)
 
         # Confidence Progress
