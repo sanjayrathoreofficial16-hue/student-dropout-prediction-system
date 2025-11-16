@@ -222,7 +222,7 @@ elif page == "Model Performance":
 # === FOOTER WITH NAWAL RAI'S INFO ===
 st.markdown("---")
 st.markdown(f"""
-<div class="fade-in" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+<div class="fade-in" style="text-align: center; padding: 20px; border-radius: 10px;">
     <h3>Project by Nawal Rai</h3>
     <p><strong>Roll No:</strong> B2361115 | <strong>Email:</strong> nawalmeghwar9@gmail.com | <strong>Department:</strong> BS Information Technology</p>
 </div>
