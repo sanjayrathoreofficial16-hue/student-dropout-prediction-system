@@ -201,8 +201,6 @@ elif page == "Data Insights":
         fig = px.histogram(df, x='Age at enrollment', color='Target', title="Age vs Outcome")
         st.plotly_chart(fig, use_container_width=True)
 
-    st.image("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-             caption="Diverse Students in ML-Enhanced Learning", use_column_width=True)
 
 elif page == "Model Performance":
     st.header("Model Accuracy & Insights")
@@ -220,9 +218,6 @@ elif page == "Model Performance":
         cm = confusion_matrix(y, y_pred)
         fig = px.imshow(cm, text_auto=True, title="Confusion Matrix")
         st.plotly_chart(fig, use_container_width=True)
-
-    st.image("https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-             caption="ML Model Visualizing Academic Success", use_column_width=True)
 
 # === FOOTER WITH NAWAL RAI'S INFO ===
 st.markdown("---")
